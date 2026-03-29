@@ -1048,10 +1048,7 @@ button {
 /* ===================================
    GSAP Animation initial states
    =================================== */
-[data-animate] {
-  opacity: 0;
-  transform: translateY(40px);
-}
+/* Animation initial states are handled by GSAP via JS */
 
 /* ===================================
    PC LAYOUT (min-width: 1024px)
