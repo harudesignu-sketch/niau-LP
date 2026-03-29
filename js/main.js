@@ -7,10 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // ===== SET INITIAL STATES =====
-  // Hide all animated elements via GSAP (not CSS) to avoid display issues
-  gsap.set("[data-animate]", { opacity: 0, y: 40 });
-
   // ===== HERO SLIDESHOW =====
   initSlideshow();
 
@@ -28,6 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== NUMBER COUNT-UP =====
   initCountUp();
+
+  // ===== FALLBACK: ensure all elements become visible =====
+  // If ScrollTrigger doesn't fire (e.g. missing images causing layout issues),
+  // force-show all elements after 3 seconds
+  setTimeout(() => {
+    document.querySelectorAll("[data-animate]").forEach((el) => {
+      const style = window.getComputedStyle(el);
+      if (parseFloat(style.opacity) < 0.1) {
+        gsap.to(el, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.5 });
+      }
+    });
+  }, 3000);
 });
 
 /* ----- Slideshow ----- */
@@ -130,7 +138,7 @@ function initScrollAnimations() {
         ease: ease,
         scrollTrigger: {
           trigger: el,
-          start: "top 85%",
+          start: "top 95%",
           toggleActions: "play none none none",
         },
       }
