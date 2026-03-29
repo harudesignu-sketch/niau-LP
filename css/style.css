@@ -1,0 +1,1218 @@
+/* ===================================
+   NiauMen's Hair LP - Stylesheet
+   SP-first design with PC fixed sidebars
+   =================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  color: #333;
+  background: #fff;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+/* --- Utility --- */
+.text-gold {
+  color: #c4a265;
+}
+
+.text-gold-bold {
+  color: #c4a265;
+  font-weight: 700;
+}
+
+.label-badge {
+  display: inline-block;
+  padding: 4px 20px;
+  border: 1px solid #c4a265;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.logo-ruby {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  display: block;
+  color: #fff;
+}
+
+.logo-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1;
+}
+
+.logo-text-inline {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #c4a265;
+}
+
+/* --- Section base --- */
+.section {
+  padding: 60px 0;
+}
+
+.section__inner {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===================================
+   SIDEBARS (PC only, hidden on SP)
+   =================================== */
+.sidebar-left,
+.sidebar-right {
+  display: none;
+}
+
+/* ===================================
+   HERO / FIRST VIEW
+   =================================== */
+.hero {
+  position: relative;
+  background: #1a1a2e;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero__logo-sp {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.hero__logo-sp .logo-text {
+  font-size: 2rem;
+}
+
+.hero__slideshow {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.hero__slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.hero__slide.active {
+  opacity: 1;
+}
+
+.hero__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__content {
+  padding: 40px 20px 20px;
+}
+
+.hero__catch {
+  font-weight: 700;
+}
+
+.hero__catch-accent {
+  display: block;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #c4a265;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 3px solid #c4a265;
+  margin-bottom: 8px;
+}
+
+.hero__catch-sub {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.hero__catch-main {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-top: 4px;
+}
+
+.hero__desc {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero__image-bottom {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.hero__image-bottom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===================================
+   WORRIES (お悩み)
+   =================================== */
+.worries {
+  background: #f0ede8;
+}
+
+.worries__title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.worries__list {
+  list-style: none;
+}
+
+.worries__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #d5d0c8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.worries__item:last-child {
+  border-bottom: none;
+}
+
+.worries__check {
+  color: #c4a265;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.worries__item strong {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #c4a265;
+  text-underline-offset: 3px;
+}
+
+/* ===================================
+   SOLUTION (解決)
+   =================================== */
+.solution {
+  background: #1a1a2e;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.solution__sub {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.solution__main {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* ===================================
+   REASONS (お悩みの原因)
+   =================================== */
+.reasons {
+  background: #fff;
+}
+
+.reasons__title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.reasons__title strong {
+  color: #c4a265;
+}
+
+.reasons__desc {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.reasons__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.reasons__card {
+  background: #f8f6f2;
+  border-radius: 8px;
+  padding: 24px 12px;
+  text-align: center;
+}
+
+.reasons__card-icon {
+  margin-bottom: 12px;
+}
+
+.reasons__card-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.reasons__card p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.reasons__bottom {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+/* ===================================
+   RESULTS (実績)
+   =================================== */
+.results {
+  background: #1a1a2e;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.results::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/results-bg.jpg") center/cover no-repeat;
+  opacity: 0.2;
+}
+
+.results .section__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.results__label {
+  margin-bottom: 12px;
+}
+
+.results__title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.results__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results__card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(196, 162, 101, 0.3);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.results__card-label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  letter-spacing: 0.1em;
+}
+
+.results__card-num {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.num-large {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.results__card-text {
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.results__card-sub {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.results__note {
+  margin-top: 24px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+/* ===================================
+   WHY CHOOSE (選ばれる理由)
+   =================================== */
+.why-choose {
+  background: #fff;
+}
+
+.why-choose__title {
+  margin-bottom: 40px;
+}
+
+.why-choose__title-brand {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.2;
+  color: #1a1a2e;
+}
+
+.why-choose__title-sub {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.why-choose__item {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.why-choose__num {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(196, 162, 101, 0.4);
+  line-height: 1;
+  z-index: 1;
+}
+
+.why-choose__image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.why-choose__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.why-choose__item-title {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #c4a265;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #c4a265;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.why-choose__item-desc {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* ===================================
+   BEFORE / AFTER
+   =================================== */
+.before-after {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.before-after__label {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.before-after__title {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+  letter-spacing: 0.05em;
+}
+
+.before-after__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.before-after__card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.before-after__images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.before-after__img {
+  position: relative;
+  height: 200px;
+  background: #f5f0e8;
+}
+
+.before-after__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.before-after__tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  padding: 2px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.before-after__tag--before {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.before-after__tag--after {
+  background: #c4a265;
+  color: #fff;
+}
+
+/* ===================================
+   VOICES (お客様の声)
+   =================================== */
+.voices {
+  background: #fff;
+}
+
+.voices__label {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.voices__title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.voices__list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.voices__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.voices__item--reverse {
+  flex-direction: column;
+}
+
+.voices__photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.voices__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.voices__text {
+  text-align: center;
+}
+
+.voices__name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.voices__text p {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* At wider SP widths, alternate layout */
+@media (min-width: 400px) {
+  .voices__item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .voices__item--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .voices__text {
+    text-align: left;
+  }
+
+  .voices__item--reverse .voices__text {
+    text-align: right;
+  }
+}
+
+/* ===================================
+   MENU (メニュー・料金)
+   =================================== */
+.menu {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.menu__title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.menu__subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 30px;
+}
+
+.menu__area {
+  margin-bottom: 30px;
+}
+
+.menu__area-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.menu__area-sub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+.menu__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.menu__table thead th {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+.menu__table thead th:last-child {
+  text-align: right;
+}
+
+.menu__table tbody td {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+.menu__table tbody td:last-child {
+  text-align: right;
+  font-weight: 500;
+}
+
+/* LINE Coupon Banner */
+.menu__coupon {
+  background: linear-gradient(135deg, #2a2a4a, #1a1a2e);
+  border: 1px solid rgba(196, 162, 101, 0.4);
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.menu__coupon-badge {
+  display: inline-block;
+  background: #c4a265;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.menu__coupon-main {
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.6;
+}
+
+.menu__coupon-note {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 8px;
+}
+
+.menu__coupon-side {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+}
+
+/* ===================================
+   CAMPAIGN (キャンペーン)
+   =================================== */
+.campaign {
+  background: #222;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/campaign-bg.jpg") center/cover no-repeat;
+  opacity: 0.3;
+}
+
+.campaign .section__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.campaign__box {
+  text-align: center;
+  padding: 40px 20px;
+  border: 2px solid rgba(196, 162, 101, 0.5);
+  border-radius: 50% / 10%;
+  position: relative;
+}
+
+.campaign__pre {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.campaign__title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.campaign__list {
+  list-style: none;
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.campaign__list li {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.campaign__cta-label {
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.campaign__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #06C755;
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campaign__cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.4);
+}
+
+.campaign__note {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* ===================================
+   SHOPS (店舗一覧)
+   =================================== */
+.shops {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.shops__title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.shops__area-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.shops__area-sub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 16px;
+}
+
+.shops__card {
+  margin-bottom: 30px;
+}
+
+.shops__card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background: #2a2a4a;
+}
+
+.shops__card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shops__card-name {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+}
+
+.shops__info {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shops__info th {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 6px 8px 6px 0;
+  vertical-align: top;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.shops__info td {
+  font-size: 0.8rem;
+  padding: 6px 0;
+}
+
+/* ===================================
+   FAQ
+   =================================== */
+.faq {
+  background: #f8f6f2;
+}
+
+.faq__title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.faq__item {
+  border-bottom: 1px solid #d5d0c8;
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.faq__question:hover {
+  opacity: 0.7;
+}
+
+.faq__q {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #c4a265;
+  flex-shrink: 0;
+}
+
+.faq__toggle {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: #c4a265;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq__answer.active {
+  max-height: 300px;
+  padding-bottom: 16px;
+}
+
+.faq__answer p {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.8;
+  padding-left: 32px;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer__brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.footer__sub {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 24px;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.footer__nav a {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s;
+}
+
+.footer__nav a:hover {
+  color: #c4a265;
+}
+
+.footer__copy {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===================================
+   GSAP Animation initial states
+   =================================== */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ===================================
+   PC LAYOUT (min-width: 1024px)
+   Fixed sidebars + center content
+   =================================== */
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+
+  .sidebar-left {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #1a1a2e;
+    color: #fff;
+    padding: 40px 24px;
+    z-index: 100;
+    overflow-y: auto;
+  }
+
+  .sidebar-left__logo {
+    margin-bottom: 40px;
+  }
+
+  .sidebar-left__logo .logo-text {
+    font-size: 3rem;
+  }
+
+  .sidebar-left__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .sidebar-left__nav a {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s;
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar-left__nav a:hover {
+    color: #c4a265;
+  }
+
+  .sidebar-left__sns {
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  .sidebar-left__sns span {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-left__sns-icons {
+    display: flex;
+    gap: 12px;
+  }
+
+  .sidebar-left__sns-icons a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s;
+  }
+
+  .sidebar-left__sns-icons a:hover {
+    color: #c4a265;
+  }
+
+  .sidebar-right {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 35vw;
+    height: 100vh;
+    z-index: 100;
+    overflow: hidden;
+  }
+
+  .sidebar-right__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidebar-right__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sidebar-right__text {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+    writing-mode: vertical-rl;
+    letter-spacing: 0.1em;
+  }
+
+  .main-content {
+    margin-left: 260px;
+    margin-right: 35vw;
+    width: calc(100% - 260px - 35vw);
+    min-height: 100vh;
+  }
+
+  .hero__logo-sp {
+    display: none;
+  }
+
+  .section__inner {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+}
+
+/* ===================================
+   Tablet adjustments
+   =================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section__inner {
+    max-width: 600px;
+  }
+
+  .reasons__grid {
+    gap: 16px;
+  }
+
+  .why-choose__image {
+    height: 300px;
+  }
+}
+
+/* ===================================
+   CTA Floating button (SP)
+   =================================== */
+@media (max-width: 1023px) {
+  .hero__logo-sp {
+    display: block;
+  }
+}
+
+/* ===================================
+   Smooth placeholder images
+   =================================== */
+.hero__slide img,
+.why-choose__image img,
+.before-after__img img,
+.voices__photo img,
+.shops__card-image img {
+  background: linear-gradient(135deg, #2a2a4a 0%, #3a3a5a 50%, #2a2a4a 100%);
+}
