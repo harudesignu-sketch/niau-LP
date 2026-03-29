@@ -4,38 +4,19 @@
    =================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Register GSAP plugins
   gsap.registerPlugin(ScrollTrigger);
 
-  // ===== HERO SLIDESHOW =====
   initSlideshow();
-
-  // ===== HERO ENTRANCE ANIMATION =====
   initHeroAnimation();
-
-  // ===== SCROLL ANIMATIONS =====
-  initScrollAnimations();
-
-  // ===== FAQ ACCORDION =====
   initFAQ();
-
-  // ===== SMOOTH SCROLL (sidebar nav) =====
   initSmoothScroll();
 
-  // ===== NUMBER COUNT-UP =====
-  initCountUp();
-
-  // ===== FALLBACK: ensure all elements become visible =====
-  // If ScrollTrigger doesn't fire (e.g. missing images causing layout issues),
-  // force-show all elements after 3 seconds
-  setTimeout(() => {
-    document.querySelectorAll("[data-animate]").forEach((el) => {
-      const style = window.getComputedStyle(el);
-      if (parseFloat(style.opacity) < 0.1) {
-        gsap.to(el, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.5 });
-      }
-    });
-  }, 3000);
+  // Wait for images to load, then initialize scroll animations
+  window.addEventListener("load", () => {
+    initScrollAnimations();
+    initCountUp();
+    ScrollTrigger.refresh();
+  });
 });
 
 /* ----- Slideshow ----- */
@@ -44,7 +25,6 @@ function initSlideshow() {
   if (slides.length === 0) return;
 
   let current = 0;
-  const interval = 4000;
 
   function nextSlide() {
     slides[current].classList.remove("active");
@@ -52,7 +32,7 @@ function initSlideshow() {
     slides[current].classList.add("active");
   }
 
-  setInterval(nextSlide, interval);
+  setInterval(nextSlide, 4000);
 }
 
 /* ----- Hero Entrance Animation ----- */
@@ -60,92 +40,80 @@ function initHeroAnimation() {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
   tl.from(".hero__logo-sp", {
-    opacity: 0,
-    y: -20,
-    duration: 0.8,
-    delay: 0.3,
+    opacity: 0, y: -20, duration: 0.8, delay: 0.3,
   });
-
-  tl.from(
-    ".hero__catch-accent",
-    { opacity: 0, x: -40, duration: 0.8 },
-    "-=0.3"
-  );
-
-  tl.from(
-    ".hero__catch-sub",
-    { opacity: 0, y: 20, duration: 0.6 },
-    "-=0.3"
-  );
-
-  tl.from(
-    ".hero__catch-main",
-    { opacity: 0, y: 20, duration: 0.8 },
-    "-=0.2"
-  );
-
-  tl.from(
-    ".hero__desc",
-    { opacity: 0, y: 20, duration: 0.6 },
-    "-=0.3"
-  );
-
-  tl.from(
-    ".hero__image-bottom",
-    { opacity: 0, y: 60, duration: 1 },
-    "-=0.3"
-  );
+  tl.from(".hero__catch-accent", {
+    opacity: 0, x: -40, duration: 0.8,
+  }, "-=0.3");
+  tl.from(".hero__catch-sub", {
+    opacity: 0, y: 20, duration: 0.6,
+  }, "-=0.3");
+  tl.from(".hero__catch-main", {
+    opacity: 0, y: 20, duration: 0.8,
+  }, "-=0.2");
+  tl.from(".hero__desc", {
+    opacity: 0, y: 20, duration: 0.6,
+  }, "-=0.3");
+  tl.from(".hero__image-bottom", {
+    opacity: 0, y: 60, duration: 1,
+  }, "-=0.3");
 }
 
 /* ----- Scroll-triggered Animations ----- */
 function initScrollAnimations() {
-  const animateElements = document.querySelectorAll("[data-animate]");
+  // Use Intersection Observer as primary method (more reliable than ScrollTrigger for reveal)
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = el.dataset.delay || 0;
 
-  animateElements.forEach((el) => {
-    // Determine animation type based on parent section
-    let fromProps = { opacity: 0, y: 40 };
-    let duration = 0.8;
-    let ease = "power2.out";
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            x: 0,
+            scale: 1,
+            duration: 0.8,
+            delay: parseFloat(delay),
+            ease: "power2.out",
+          });
 
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: "0px 0px 50px 0px" }
+  );
+
+  // Set initial hidden state and observe
+  document.querySelectorAll("[data-animate]").forEach((el) => {
+    // Determine initial state based on section
     if (el.closest(".worries")) {
-      fromProps = { opacity: 0, x: -30 };
-      duration = 0.6;
+      gsap.set(el, { opacity: 0, x: -30 });
     } else if (el.closest(".reasons__grid")) {
-      fromProps = { opacity: 0, scale: 0.9 };
-      duration = 0.6;
-      ease = "back.out(1.4)";
-    } else if (el.closest(".results__cards")) {
-      fromProps = { opacity: 0, y: 30 };
-      duration = 0.6;
-    } else if (el.closest(".why-choose")) {
-      fromProps = { opacity: 0, y: 50 };
-      duration = 0.9;
-      ease = "power3.out";
+      gsap.set(el, { opacity: 0, scale: 0.9 });
     } else if (el.closest(".before-after")) {
-      fromProps = { opacity: 0, y: 40, scale: 0.95 };
-      duration = 0.7;
+      gsap.set(el, { opacity: 0, y: 40, scale: 0.95 });
+    } else {
+      gsap.set(el, { opacity: 0, y: 40 });
     }
 
-    gsap.fromTo(
-      el,
-      fromProps,
-      {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        scale: 1,
-        duration: duration,
-        ease: ease,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 95%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    observer.observe(el);
   });
 
-  // Parallax effect on why-choose images
+  // Stagger delays for grid items
+  document.querySelectorAll(".reasons__card").forEach((card, i) => {
+    card.dataset.delay = (i * 0.15).toString();
+  });
+  document.querySelectorAll(".results__card").forEach((card, i) => {
+    card.dataset.delay = (i * 0.2).toString();
+  });
+  document.querySelectorAll(".before-after__card").forEach((card, i) => {
+    card.dataset.delay = (i * 0.2).toString();
+  });
+
+  // Parallax effect on why-choose images (GSAP ScrollTrigger)
   document.querySelectorAll(".why-choose__image img").forEach((img) => {
     gsap.to(img, {
       yPercent: -15,
@@ -159,26 +127,8 @@ function initScrollAnimations() {
     });
   });
 
-  // Campaign section - special entrance
-  const campaignBox = document.querySelector(".campaign__box");
-  if (campaignBox) {
-    gsap.fromTo(
-      campaignBox,
-      { opacity: 0, scale: 0.9 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: campaignBox,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-
-    // Pulse animation on CTA button
+  // Pulse animation on CTA button
+  if (document.querySelector(".campaign__cta-btn")) {
     gsap.to(".campaign__cta-btn", {
       scale: 1.05,
       duration: 0.8,
@@ -188,6 +138,17 @@ function initScrollAnimations() {
       delay: 1,
     });
   }
+
+  // Fallback: force-show any still-hidden elements after 5 seconds
+  setTimeout(() => {
+    document.querySelectorAll("[data-animate]").forEach((el) => {
+      const opacity = parseFloat(window.getComputedStyle(el).opacity);
+      if (opacity < 0.5) {
+        gsap.to(el, { opacity: 1, y: 0, x: 0, scale: 1, duration: 0.3 });
+        observer.unobserve(el);
+      }
+    });
+  }, 5000);
 }
 
 /* ----- Count-up Animation ----- */
@@ -200,47 +161,44 @@ function initCountUp() {
 
     const isDecimal = target % 1 !== 0;
 
-    ScrollTrigger.create({
-      trigger: el,
-      start: "top 85%",
-      onEnter: () => {
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: target,
-          duration: 1.5,
-          ease: "power2.out",
-          onUpdate: () => {
-            el.textContent = isDecimal
-              ? obj.val.toFixed(1)
-              : Math.round(obj.val);
-          },
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: target,
+              duration: 1.5,
+              ease: "power2.out",
+              onUpdate: () => {
+                el.textContent = isDecimal
+                  ? obj.val.toFixed(1)
+                  : Math.round(obj.val);
+              },
+            });
+            obs.unobserve(el);
+          }
         });
       },
-      once: true,
-    });
+      { threshold: 0.5 }
+    );
+
+    obs.observe(el);
   });
 }
 
 /* ----- FAQ Accordion ----- */
 function initFAQ() {
-  const questions = document.querySelectorAll(".faq__question");
-
-  questions.forEach((btn) => {
+  document.querySelectorAll(".faq__question").forEach((btn) => {
     btn.addEventListener("click", () => {
       const answer = btn.nextElementSibling;
       const toggle = btn.querySelector(".faq__toggle");
       const isOpen = answer.classList.contains("active");
 
       // Close all
-      document.querySelectorAll(".faq__answer").forEach((a) => {
-        a.classList.remove("active");
-      });
-      document.querySelectorAll(".faq__toggle").forEach((t) => {
-        t.textContent = "＋";
-      });
-      document.querySelectorAll(".faq__question").forEach((q) => {
-        q.setAttribute("aria-expanded", "false");
-      });
+      document.querySelectorAll(".faq__answer").forEach((a) => a.classList.remove("active"));
+      document.querySelectorAll(".faq__toggle").forEach((t) => (t.textContent = "＋"));
+      document.querySelectorAll(".faq__question").forEach((q) => q.setAttribute("aria-expanded", "false"));
 
       // Toggle current
       if (!isOpen) {
@@ -257,15 +215,9 @@ function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       e.preventDefault();
-      const targetId = anchor.getAttribute("href");
-      const target = document.querySelector(targetId);
-
+      const target = document.querySelector(anchor.getAttribute("href"));
       if (target) {
-        gsap.to(window, {
-          duration: 0.8,
-          scrollTo: { y: target, offsetY: 0 },
-          ease: "power2.inOut",
-        });
+        target.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
