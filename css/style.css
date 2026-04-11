@@ -1274,7 +1274,9 @@ button {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 900;
+  letter-spacing: 0.1em;
   margin-bottom: 30px;
+  color: #1a1a2e;
 }
 
 .faq__item {
