@@ -1099,6 +1099,90 @@ button {
 }
 
 /* ===================================
+   BOOKING (ご予約方法)
+   =================================== */
+.booking {
+  background: #fff;
+  color: #1a1a2e;
+}
+
+.booking__pre {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #c4a265;
+  margin-bottom: 4px;
+}
+
+.booking__title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 36px;
+  color: #1a1a2e;
+}
+
+.booking__title-accent {
+  font-style: normal;
+  color: #c4a265;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.booking__steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.booking__step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 140px;
+}
+
+.booking__step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.booking__step-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.booking__step-text {
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.booking__arrow {
+  font-size: 1.8rem;
+  color: #ccc;
+  padding-top: 18px;
+  flex-shrink: 0;
+}
+
+.booking__note {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 24px;
+}
+
+/* ===================================
    SHOPS (店舗一覧)
    =================================== */
 .shops {
