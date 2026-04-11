@@ -238,15 +238,28 @@ button {
    WORRIES (お悩み)
    =================================== */
 .worries {
-  background: #f0ede8;
+  background: #fff;
 }
 
 .worries__title {
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.7;
   margin-bottom: 30px;
+  color: #1a1a2e;
+}
+
+.worries__title-pre {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.worries__title-key {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #c4a265;
+  vertical-align: baseline;
 }
 
 .worries__list {
