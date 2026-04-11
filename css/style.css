@@ -1399,34 +1399,39 @@ button {
    FOOTER
    =================================== */
 .footer {
-  background: #1a1a1a;
+  background: #111118;
   color: #fff;
-  padding: 40px 20px 160px;
+  padding: 48px 20px 160px;
   text-align: center;
 }
 
 .footer__brand {
-  font-size: 1.2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
 }
 
 .footer__sub {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 24px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 36px;
+  letter-spacing: 0.05em;
 }
 
 .footer__nav {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 28px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
 }
 
 .footer__nav a {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
   transition: color 0.3s;
 }
 
@@ -1435,8 +1440,9 @@ button {
 }
 
 .footer__copy {
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.03em;
 }
 
 /* ===================================
