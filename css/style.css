@@ -871,7 +871,10 @@ button {
    MENU (メニュー・料金)
    =================================== */
 .menu {
-  background: #1a1a2e;
+  background: #111827;
+  background-image: linear-gradient(rgba(10, 10, 20, 0.82), rgba(10, 10, 20, 0.82)), url("../images/menu-bg.jpg");
+  background-size: cover;
+  background-position: center;
   color: #fff;
 }
 
@@ -896,26 +899,33 @@ button {
 .menu__area-title {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  color: #fff;
 }
 
 .menu__area-sub {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 12px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 10px;
 }
 
 .menu__table {
   width: 100%;
   border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .menu__table thead th {
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
 }
 
 .menu__table thead th:last-child {
@@ -923,61 +933,79 @@ button {
 }
 
 .menu__table tbody td {
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.9rem;
+}
+
+.menu__table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .menu__table tbody td:last-child {
   text-align: right;
-  font-weight: 500;
+  font-weight: 600;
+  color: #e8d5b0;
 }
 
 /* LINE Coupon Banner */
 .menu__coupon {
-  background: linear-gradient(135deg, #2a2a4a, #1a1a2e);
-  border: 1px solid rgba(196, 162, 101, 0.4);
-  border-radius: 8px;
-  padding: 30px 20px;
-  text-align: center;
+  background: #f5e6c8;
+  border-radius: 4px;
+  padding: 28px 50px 28px 24px;
+  text-align: left;
   position: relative;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 24px;
+  color: #1a1a2e;
 }
 
 .menu__coupon-badge {
-  display: inline-block;
-  background: #c4a265;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #06C755;
   color: #fff;
-  padding: 4px 16px;
+  padding: 4px 14px;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+}
+
+.menu__coupon-badge svg {
+  flex-shrink: 0;
 }
 
 .menu__coupon-main {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 900;
-  line-height: 1.6;
+  line-height: 1.65;
+  color: #1a1a2e;
 }
 
 .menu__coupon-note {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+  color: #666;
   margin-top: 8px;
 }
 
 .menu__coupon-side {
   position: absolute;
-  right: -8px;
+  right: 14px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-rl;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: #c4a265;
+  font-weight: 800;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.text-gold-bold {
+  color: #b8892a;
+  font-weight: 900;
 }
 
 /* ===================================
