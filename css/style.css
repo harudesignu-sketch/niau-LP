@@ -1186,8 +1186,8 @@ button {
    SHOPS (店舗一覧)
    =================================== */
 .shops {
-  background: #1a1a2e;
-  color: #fff;
+  background: #fff;
+  color: #1a1a2e;
 }
 
 .shops__title {
@@ -1205,21 +1205,27 @@ button {
 
 .shops__area-sub {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #888;
   margin-bottom: 16px;
 }
 
 .shops__card {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 28px;
+}
+
+.shops__card:last-of-type {
+  border-bottom: none;
 }
 
 .shops__card-image {
   width: 100%;
   height: 180px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-bottom: 12px;
-  background: #2a2a4a;
+  background: #e8e8e8;
 }
 
 .shops__card-image img {
@@ -1230,11 +1236,12 @@ button {
 
 .shops__card-name {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #eee;
   padding-bottom: 8px;
+  color: #1a1a2e;
 }
 
 .shops__info {
@@ -1244,11 +1251,11 @@ button {
 
 .shops__info th {
   font-size: 0.75rem;
-  font-weight: 500;
-  padding: 6px 8px 6px 0;
+  font-weight: 600;
+  padding: 5px 10px 5px 0;
   vertical-align: top;
   white-space: nowrap;
-  color: rgba(255, 255, 255, 0.6);
+  color: #888;
 }
 
 .shops__info td {
