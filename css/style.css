@@ -756,86 +756,115 @@ button {
    VOICES (お客様の声)
    =================================== */
 .voices {
-  background: #fff;
+  background: #f7f2eb;
 }
 
 .voices__label {
   text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: #c4a265;
   margin-bottom: 8px;
+}
+
+.voices__label::before,
+.voices__label::after {
+  content: "◆";
+  font-size: 0.5rem;
+  margin: 0 8px;
+  vertical-align: middle;
 }
 
 .voices__title {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 900;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
+  color: #1a1a2e;
 }
 
 .voices__list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
 }
 
 .voices__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  padding: 32px 0;
+  border-bottom: 1px solid #ddd8cf;
 }
 
-.voices__item--reverse {
-  flex-direction: column;
+.voices__item:last-child {
+  border-bottom: none;
 }
 
-.voices__photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
+.voices__quote-block {
+  margin-bottom: 20px;
 }
 
-.voices__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.voices__text {
-  text-align: center;
-}
-
-.voices__name {
-  font-size: 1rem;
-  font-weight: 700;
+.voices__qopen {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4rem;
+  color: #c4a265;
+  line-height: 0.7;
   margin-bottom: 8px;
 }
 
-.voices__text p {
-  font-size: 0.85rem;
-  color: #555;
-  line-height: 1.8;
+.voices__headline {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #1a1a2e;
+  padding-left: 8px;
+  margin-bottom: 4px;
 }
 
-/* At wider SP widths, alternate layout */
-@media (min-width: 400px) {
-  .voices__item {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+.voices__qclose {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4rem;
+  color: #c4a265;
+  line-height: 0.7;
+  text-align: right;
+}
 
-  .voices__item--reverse {
-    flex-direction: row-reverse;
-  }
+.voices__customer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #c4a265;
+  padding: 7px 20px;
+  width: fit-content;
+  margin: 0 auto 14px;
+  font-size: 0.82rem;
+  color: #1a1a2e;
+}
 
-  .voices__text {
-    text-align: left;
-  }
+.voices__diamond {
+  color: #c4a265;
+  font-size: 0.55rem;
+}
 
-  .voices__item--reverse .voices__text {
-    text-align: right;
-  }
+.voices__rating {
+  font-size: 0.82rem;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.voices__rating strong {
+  color: #c4a265;
+}
+
+.voices__stars {
+  color: #c4a265;
+  letter-spacing: 2px;
+}
+
+.voices__review {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: #555;
 }
 
 /* ===================================
