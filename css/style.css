@@ -238,15 +238,28 @@ button {
    WORRIES (お悩み)
    =================================== */
 .worries {
-  background: #f0ede8;
+  background: #fff;
 }
 
 .worries__title {
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.7;
   margin-bottom: 30px;
+  color: #1a1a2e;
+}
+
+.worries__title-pre {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.worries__title-key {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #c4a265;
+  vertical-align: baseline;
 }
 
 .worries__list {
@@ -288,18 +301,38 @@ button {
   background: #1a1a2e;
   color: #fff;
   text-align: center;
-  padding: 60px 20px;
+  padding: 0 20px 56px;
+}
+
+.solution::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: rgba(196, 162, 101, 0.5);
+  margin: 0 auto 32px;
 }
 
 .solution__sub {
-  font-size: 1rem;
-  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  opacity: 0.85;
 }
 
 .solution__main {
-  font-size: 1.3rem;
-  font-weight: 700;
-  line-height: 1.6;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.solution__brand {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c4a265;
 }
 
 /* ===================================
@@ -337,10 +370,11 @@ button {
 }
 
 .reasons__card {
-  background: #f8f6f2;
-  border-radius: 8px;
-  padding: 24px 12px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 12px 22px;
   text-align: center;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
 .reasons__card-icon {
@@ -363,6 +397,30 @@ button {
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.8;
+}
+
+.reasons__brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: bottom;
+  margin-right: 2px;
+}
+
+.reasons__brand-ruby {
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  color: #555;
+  line-height: 1.4;
+}
+
+.reasons__brand-name {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c4a265;
+  line-height: 1;
 }
 
 /* ===================================
@@ -394,9 +452,16 @@ button {
 }
 
 .results__title {
-  font-size: 1.6rem;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 500;
   margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.results__title-key {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #c4a265;
 }
 
 .results__cards {
@@ -461,42 +526,48 @@ button {
 .why-choose__title-brand {
   display: block;
   font-family: "Cormorant Garamond", serif;
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 600;
   font-style: italic;
-  line-height: 1.2;
-  color: #1a1a2e;
+  line-height: 1.1;
+  color: #c4a265;
 }
 
 .why-choose__title-sub {
   display: block;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-top: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 6px;
+  color: #1a1a2e;
 }
 
 .why-choose__item {
-  position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 48px;
+}
+
+.why-choose__item-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+
+.why-choose__item-header--left {
+  justify-content: flex-start;
 }
 
 .why-choose__num {
-  position: absolute;
-  top: -10px;
-  right: 0;
   font-family: "Cormorant Garamond", serif;
-  font-size: 3rem;
-  font-weight: 300;
-  color: rgba(196, 162, 101, 0.4);
-  line-height: 1;
-  z-index: 1;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #aaa;
+  letter-spacing: 0.08em;
 }
 
 .why-choose__image {
+  position: relative;
   width: 100%;
-  height: 220px;
+  height: 240px;
   overflow: hidden;
-  border-radius: 4px;
   margin-bottom: 16px;
 }
 
@@ -507,19 +578,107 @@ button {
 }
 
 .why-choose__item-title {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: #c4a265;
-  margin-bottom: 12px;
-  border-bottom: 2px solid #c4a265;
-  padding-bottom: 8px;
-  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(26, 26, 46, 0.88);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px 16px;
+  margin: 0;
 }
 
 .why-choose__item-desc {
   font-size: 0.85rem;
   line-height: 1.8;
   color: #555;
+}
+
+/* ===================================
+   HAIR CATALOG (カルーセル)
+   =================================== */
+.hair-catalog {
+  background: #fff;
+  padding: 40px 0 48px;
+}
+
+.hair-catalog__header {
+  padding: 0 20px;
+  margin-bottom: 16px;
+}
+
+.hair-catalog__title {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #bbb;
+  letter-spacing: 0.04em;
+}
+
+.hair-catalog__carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hair-catalog__slides {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #f0ede8;
+}
+
+.hair-catalog__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hair-catalog__slide.active {
+  opacity: 1;
+}
+
+.hair-catalog__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.hair-catalog__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: #fff;
+  width: 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  transition: opacity 0.2s;
+}
+
+.hair-catalog__arrow:hover {
+  opacity: 0.7;
+}
+
+.hair-catalog__arrow--prev {
+  left: 4px;
+}
+
+.hair-catalog__arrow--next {
+  right: 4px;
 }
 
 /* ===================================
@@ -597,93 +756,125 @@ button {
    VOICES (お客様の声)
    =================================== */
 .voices {
-  background: #fff;
+  background: #f7f2eb;
 }
 
 .voices__label {
   text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: #c4a265;
   margin-bottom: 8px;
+}
+
+.voices__label::before,
+.voices__label::after {
+  content: "◆";
+  font-size: 0.5rem;
+  margin: 0 8px;
+  vertical-align: middle;
 }
 
 .voices__title {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 900;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
+  color: #1a1a2e;
 }
 
 .voices__list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
 }
 
 .voices__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  padding: 32px 0;
+  border-bottom: 1px solid #ddd8cf;
 }
 
-.voices__item--reverse {
-  flex-direction: column;
+.voices__item:last-child {
+  border-bottom: none;
 }
 
-.voices__photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
+.voices__quote-block {
+  margin-bottom: 20px;
 }
 
-.voices__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.voices__text {
-  text-align: center;
-}
-
-.voices__name {
-  font-size: 1rem;
-  font-weight: 700;
+.voices__qopen {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4rem;
+  color: #c4a265;
+  line-height: 0.7;
   margin-bottom: 8px;
 }
 
-.voices__text p {
-  font-size: 0.85rem;
-  color: #555;
-  line-height: 1.8;
+.voices__headline {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #1a1a2e;
+  padding-left: 8px;
+  margin-bottom: 4px;
 }
 
-/* At wider SP widths, alternate layout */
-@media (min-width: 400px) {
-  .voices__item {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+.voices__qclose {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4rem;
+  color: #c4a265;
+  line-height: 0.7;
+  text-align: right;
+}
 
-  .voices__item--reverse {
-    flex-direction: row-reverse;
-  }
+.voices__customer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #c4a265;
+  padding: 7px 20px;
+  width: fit-content;
+  margin: 0 auto 14px;
+  font-size: 0.82rem;
+  color: #1a1a2e;
+}
 
-  .voices__text {
-    text-align: left;
-  }
+.voices__diamond {
+  color: #c4a265;
+  font-size: 0.55rem;
+}
 
-  .voices__item--reverse .voices__text {
-    text-align: right;
-  }
+.voices__rating {
+  font-size: 0.82rem;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.voices__rating strong {
+  color: #c4a265;
+}
+
+.voices__stars {
+  color: #c4a265;
+  letter-spacing: 2px;
+}
+
+.voices__review {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: #555;
 }
 
 /* ===================================
    MENU (メニュー・料金)
    =================================== */
 .menu {
-  background: #1a1a2e;
+  background: #111827;
+  background-image: linear-gradient(rgba(10, 10, 20, 0.82), rgba(10, 10, 20, 0.82)), url("../images/menu-bg.jpg");
+  background-size: cover;
+  background-position: center;
   color: #fff;
 }
 
@@ -708,26 +899,33 @@ button {
 .menu__area-title {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  color: #fff;
 }
 
 .menu__area-sub {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 12px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 10px;
 }
 
 .menu__table {
   width: 100%;
   border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .menu__table thead th {
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   text-align: left;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
 }
 
 .menu__table thead th:last-child {
@@ -735,61 +933,79 @@ button {
 }
 
 .menu__table tbody td {
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.9rem;
+}
+
+.menu__table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .menu__table tbody td:last-child {
   text-align: right;
-  font-weight: 500;
+  font-weight: 600;
+  color: #e8d5b0;
 }
 
 /* LINE Coupon Banner */
 .menu__coupon {
-  background: linear-gradient(135deg, #2a2a4a, #1a1a2e);
-  border: 1px solid rgba(196, 162, 101, 0.4);
-  border-radius: 8px;
-  padding: 30px 20px;
-  text-align: center;
+  background: #f5e6c8;
+  border-radius: 4px;
+  padding: 28px 50px 28px 24px;
+  text-align: left;
   position: relative;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 24px;
+  color: #1a1a2e;
 }
 
 .menu__coupon-badge {
-  display: inline-block;
-  background: #c4a265;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #06C755;
   color: #fff;
-  padding: 4px 16px;
+  padding: 4px 14px;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+}
+
+.menu__coupon-badge svg {
+  flex-shrink: 0;
 }
 
 .menu__coupon-main {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 900;
-  line-height: 1.6;
+  line-height: 1.65;
+  color: #1a1a2e;
 }
 
 .menu__coupon-note {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+  color: #666;
   margin-top: 8px;
 }
 
 .menu__coupon-side {
   position: absolute;
-  right: -8px;
+  right: 14px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-rl;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: #c4a265;
+  font-weight: 800;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.text-gold-bold {
+  color: #b8892a;
+  font-weight: 900;
 }
 
 /* ===================================
@@ -818,8 +1034,6 @@ button {
 .campaign__box {
   text-align: center;
   padding: 40px 20px;
-  border: 2px solid rgba(196, 162, 101, 0.5);
-  border-radius: 50% / 10%;
   position: relative;
 }
 
@@ -849,21 +1063,26 @@ button {
 }
 
 .campaign__cta-label {
-  font-size: 0.85rem;
-  margin-bottom: 12px;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
 }
 
 .campaign__cta-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
   background: #06C755;
   color: #fff;
-  padding: 16px 40px;
-  border-radius: 50px;
-  font-size: 1rem;
+  padding: 18px 20px;
+  border-radius: 8px;
+  font-size: 1.05rem;
   font-weight: 700;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -880,11 +1099,95 @@ button {
 }
 
 /* ===================================
+   BOOKING (ご予約方法)
+   =================================== */
+.booking {
+  background: #fff;
+  color: #1a1a2e;
+}
+
+.booking__pre {
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #c4a265;
+  margin-bottom: 4px;
+}
+
+.booking__title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 36px;
+  color: #1a1a2e;
+}
+
+.booking__title-accent {
+  font-style: normal;
+  color: #c4a265;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.booking__steps {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.booking__step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 140px;
+}
+
+.booking__step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.booking__step-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.booking__step-text {
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: #444;
+}
+
+.booking__arrow {
+  font-size: 1.8rem;
+  color: #ccc;
+  padding-top: 18px;
+  flex-shrink: 0;
+}
+
+.booking__note {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 24px;
+}
+
+/* ===================================
    SHOPS (店舗一覧)
    =================================== */
 .shops {
-  background: #1a1a2e;
-  color: #fff;
+  background: #fff;
+  color: #1a1a2e;
 }
 
 .shops__title {
@@ -902,21 +1205,27 @@ button {
 
 .shops__area-sub {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #888;
   margin-bottom: 16px;
 }
 
 .shops__card {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 28px;
+}
+
+.shops__card:last-of-type {
+  border-bottom: none;
 }
 
 .shops__card-image {
   width: 100%;
   height: 180px;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-bottom: 12px;
-  background: #2a2a4a;
+  background: #e8e8e8;
 }
 
 .shops__card-image img {
@@ -927,11 +1236,12 @@ button {
 
 .shops__card-name {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #eee;
   padding-bottom: 8px;
+  color: #1a1a2e;
 }
 
 .shops__info {
@@ -941,11 +1251,11 @@ button {
 
 .shops__info th {
   font-size: 0.75rem;
-  font-weight: 500;
-  padding: 6px 8px 6px 0;
+  font-weight: 600;
+  padding: 5px 10px 5px 0;
   vertical-align: top;
   white-space: nowrap;
-  color: rgba(255, 255, 255, 0.6);
+  color: #888;
 }
 
 .shops__info td {
@@ -964,7 +1274,9 @@ button {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 900;
+  letter-spacing: 0.1em;
   margin-bottom: 30px;
+  color: #1a1a2e;
 }
 
 .faq__item {
@@ -1022,37 +1334,104 @@ button {
 }
 
 /* ===================================
+   CTA BAR (Fixed bottom)
+   =================================== */
+.cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  padding: 10px 14px 14px;
+  background: linear-gradient(to top, #fff 75%, rgba(255,255,255,0));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.cta-bar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+  pointer-events: auto;
+}
+
+.cta-bar__btn:hover {
+  opacity: 0.88;
+}
+
+.cta-bar__btn--counseling {
+  background: #c4a265;
+}
+
+.cta-bar__btn--line {
+  background: #06C755;
+}
+
+.cta-bar__line-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .cta-bar {
+    left: 260px;
+    right: 35vw;
+  }
+}
+
+/* ===================================
    FOOTER
    =================================== */
 .footer {
-  background: #1a1a1a;
+  background: #111118;
   color: #fff;
-  padding: 40px 20px;
+  padding: 48px 20px 160px;
   text-align: center;
 }
 
 .footer__brand {
-  font-size: 1.2rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
 }
 
 .footer__sub {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 24px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 36px;
+  letter-spacing: 0.05em;
 }
 
 .footer__nav {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 28px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
 }
 
 .footer__nav a {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
   transition: color 0.3s;
 }
 
@@ -1061,8 +1440,9 @@ button {
 }
 
 .footer__copy {
-  font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.03em;
 }
 
 /* ===================================

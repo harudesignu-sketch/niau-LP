@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   initSlideshow();
+  initHairCatalog();
   initHeroAnimation();
   initFAQ();
   initSmoothScroll();
@@ -43,6 +44,36 @@ function initSlideshow() {
     }
 
     setTimeout(() => setInterval(nextSlide, 4000), delay);
+  });
+}
+
+/* ----- Hair Catalog Carousel ----- */
+function initHairCatalog() {
+  const container = document.getElementById("hairCatalogSlides");
+  if (!container) return;
+
+  const slides = container.querySelectorAll(".hair-catalog__slide");
+  if (slides.length <= 1) return;
+
+  let current = 0;
+
+  function goTo(index) {
+    slides[current].classList.remove("active");
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add("active");
+  }
+
+  document.querySelector(".hair-catalog__arrow--prev")
+    ?.addEventListener("click", () => goTo(current - 1));
+  document.querySelector(".hair-catalog__arrow--next")
+    ?.addEventListener("click", () => goTo(current + 1));
+
+  // スワイプ対応
+  let startX = 0;
+  container.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  container.addEventListener("touchend", (e) => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
   });
 }
 
