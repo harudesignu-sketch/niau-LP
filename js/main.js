@@ -21,25 +21,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ----- Slideshow ----- */
 function initSlideshow() {
-  const slides = document.querySelectorAll(".hero__slide");
-  if (slides.length === 0) return;
+  // 3つのスライドショーを独立して初期化（タイミングをずらす）
+  const groups = [
+    { id: "slideshowMain",   cls: ".hero__slide",           delay: 0    },
+    { id: "slideshowBottom", cls: ".hero__slide",           delay: 1500 },
+    { id: "slideshowRight",  cls: ".sidebar-right__slide",  delay: 3000 },
+  ];
 
-  let current = 0;
+  groups.forEach(({ id, cls, delay }) => {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const slides = container.querySelectorAll(cls);
+    if (slides.length <= 1) return;
 
-  function nextSlide() {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }
+    let current = 0;
 
-  setInterval(nextSlide, 4000);
+    function nextSlide() {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }
+
+    setTimeout(() => setInterval(nextSlide, 4000), delay);
+  });
 }
 
 /* ----- Hero Entrance Animation ----- */
 function initHeroAnimation() {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  tl.from(".hero__logo-sp", {
+  tl.from(".hero__header", {
     opacity: 0, y: -20, duration: 0.8, delay: 0.3,
   });
   tl.from(".hero__catch-accent", {
@@ -54,7 +65,7 @@ function initHeroAnimation() {
   tl.from(".hero__desc", {
     opacity: 0, y: 20, duration: 0.6,
   }, "-=0.3");
-  tl.from(".hero__image-bottom", {
+  tl.from(".hero__slideshow--bottom", {
     opacity: 0, y: 60, duration: 1,
   }, "-=0.3");
 }
