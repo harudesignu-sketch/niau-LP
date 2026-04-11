@@ -109,28 +109,55 @@ button {
    HERO / FIRST VIEW
    =================================== */
 .hero {
-  position: relative;
-  background: #1a1a2e;
-  color: #fff;
+  background: #fff;
+  color: #1a1a2e;
   overflow: hidden;
 }
 
-.hero__logo-sp {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
+.hero__header {
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
 }
 
-.hero__logo-sp .logo-text {
-  font-size: 2rem;
+.hero__logo {
+  line-height: 1;
+}
+
+.hero__logo .logo-ruby {
+  color: #fff;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  display: block;
+}
+
+.hero__logo .logo-text {
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.hero__badge {
+  border: 1px solid #c4a265;
+  color: #fff;
+  font-size: 0.72rem;
+  padding: 5px 14px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .hero__slideshow {
   position: relative;
   width: 100%;
-  height: 70vh;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
+  background: #2a2a4a;
+}
+
+.hero__slideshow--bottom {
+  aspect-ratio: 4 / 3;
 }
 
 .hero__slides {
@@ -160,58 +187,51 @@ button {
 }
 
 .hero__content {
-  padding: 40px 20px 20px;
+  padding: 24px 20px 16px;
+  background: #fff;
 }
 
 .hero__catch {
   font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.hero__catch-line1 {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
 .hero__catch-accent {
-  display: block;
-  font-family: "Noto Sans JP", sans-serif;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #c4a265;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 4px;
-  border-bottom: 3px solid #c4a265;
-  margin-bottom: 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #1a1a2e;
+  border-bottom: 2px solid #1a1a2e;
+  padding-bottom: 2px;
 }
 
 .hero__catch-sub {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #1a1a2e;
 }
 
 .hero__catch-main {
   display: block;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  margin-top: 4px;
+  color: #1a1a2e;
+  line-height: 1.2;
 }
 
 .hero__desc {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   line-height: 1.8;
-  margin-top: 20px;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.hero__image-bottom {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-.hero__image-bottom img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  color: #666;
 }
 
 /* ===================================
@@ -1137,12 +1157,32 @@ button {
     overflow: hidden;
   }
 
-  .sidebar-right__image {
+  .sidebar-right__slideshow {
     width: 100%;
     height: 100%;
   }
 
-  .sidebar-right__image img {
+  .sidebar-right__slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidebar-right__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .sidebar-right__slide.active {
+    opacity: 1;
+  }
+
+  .sidebar-right__slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1165,10 +1205,6 @@ button {
     margin-right: 35vw;
     width: calc(100% - 260px - 35vw);
     min-height: 100vh;
-  }
-
-  .hero__logo-sp {
-    display: none;
   }
 
   .section__inner {
@@ -1194,19 +1230,12 @@ button {
   }
 }
 
-/* ===================================
-   CTA Floating button (SP)
-   =================================== */
-@media (max-width: 1023px) {
-  .hero__logo-sp {
-    display: block;
-  }
-}
 
 /* ===================================
    Smooth placeholder images
    =================================== */
 .hero__slide img,
+.sidebar-right__slide img,
 .why-choose__image img,
 .before-after__img img,
 .voices__photo img,
