@@ -301,18 +301,38 @@ button {
   background: #1a1a2e;
   color: #fff;
   text-align: center;
-  padding: 60px 20px;
+  padding: 0 20px 56px;
+}
+
+.solution::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: rgba(196, 162, 101, 0.5);
+  margin: 0 auto 32px;
 }
 
 .solution__sub {
-  font-size: 1rem;
-  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  opacity: 0.85;
 }
 
 .solution__main {
-  font-size: 1.3rem;
-  font-weight: 700;
-  line-height: 1.6;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.solution__brand {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c4a265;
 }
 
 /* ===================================
