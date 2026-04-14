@@ -1328,6 +1328,28 @@ section.campaign {
   flex-shrink: 0;
 }
 
+/* SP: fixed追従 */
+@media (max-width: 1023px) {
+  .cta-bar.is-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.cta-bar__placeholder {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .cta-bar__placeholder.is-active {
+    display: block;
+  }
+}
+
 @media (min-width: 1024px) {
   .cta-bar {
     left: 260px;

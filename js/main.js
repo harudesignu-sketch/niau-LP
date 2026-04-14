@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroAnimation();
   initFAQ();
   initSmoothScroll();
+  initFixedCtaBar();
 
   // Wait for images to load, then initialize scroll animations
   window.addEventListener("load", () => {
@@ -243,6 +244,57 @@ function initFAQ() {
         btn.setAttribute("aria-expanded", "true");
       }
     });
+  });
+}
+
+/* ----- SP Fixed CTA Bar ----- */
+function initFixedCtaBar() {
+  const ctaBar = document.getElementById("ctaBar");
+  if (!ctaBar) return;
+
+  // プレースホルダーを生成してCTAバーの直後に挿入
+  const placeholder = document.createElement("div");
+  placeholder.className = "cta-bar__placeholder";
+  ctaBar.parentNode.insertBefore(placeholder, ctaBar.nextSibling);
+
+  function isSP() {
+    return window.innerWidth < 1024;
+  }
+
+  function setFixed() {
+    placeholder.style.height = ctaBar.offsetHeight + "px";
+    placeholder.classList.add("is-active");
+    ctaBar.classList.add("is-fixed");
+  }
+
+  function unsetFixed() {
+    placeholder.classList.remove("is-active");
+    ctaBar.classList.remove("is-fixed");
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!isSP()) {
+          unsetFixed();
+          return;
+        }
+        // 要素が画面上部から外れた（スクロールで通り過ぎた）場合に fixed 化
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          setFixed();
+        } else {
+          unsetFixed();
+        }
+      });
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(ctaBar);
+
+  // PCに切り替わったときは解除
+  window.addEventListener("resize", () => {
+    if (!isSP()) unsetFixed();
   });
 }
 
