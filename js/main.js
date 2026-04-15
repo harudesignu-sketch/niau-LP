@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   initSlideshow();
+  initHairCatalog();
   initHeroAnimation();
   initFAQ();
   initSmoothScroll();
@@ -21,25 +22,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ----- Slideshow ----- */
 function initSlideshow() {
-  const slides = document.querySelectorAll(".hero__slide");
-  if (slides.length === 0) return;
+  // 3つのスライドショーを独立して初期化（タイミングをずらす）
+  const groups = [
+    { id: "slideshowMain",   cls: ".hero__slide",           delay: 0    },
+    { id: "slideshowBottom", cls: ".hero__slide",           delay: 1500 },
+    { id: "slideshowRight",  cls: ".sidebar-right__slide",  delay: 3000 },
+  ];
+
+  groups.forEach(({ id, cls, delay }) => {
+    const container = document.getElementById(id);
+    if (!container) return;
+    const slides = container.querySelectorAll(cls);
+    if (slides.length <= 1) return;
+
+    let current = 0;
+
+    function nextSlide() {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }
+
+    setTimeout(() => setInterval(nextSlide, 4000), delay);
+  });
+}
+
+/* ----- Hair Catalog Carousel ----- */
+function initHairCatalog() {
+  const container = document.getElementById("hairCatalogSlides");
+  if (!container) return;
+
+  const slides = container.querySelectorAll(".hair-catalog__slide");
+  if (slides.length <= 1) return;
 
   let current = 0;
 
-  function nextSlide() {
+  function goTo(index) {
     slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
+    current = (index + slides.length) % slides.length;
     slides[current].classList.add("active");
   }
 
-  setInterval(nextSlide, 4000);
+  document.querySelector(".hair-catalog__arrow--prev")
+    ?.addEventListener("click", () => goTo(current - 1));
+  document.querySelector(".hair-catalog__arrow--next")
+    ?.addEventListener("click", () => goTo(current + 1));
+
+  // スワイプ対応
+  let startX = 0;
+  container.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  container.addEventListener("touchend", (e) => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  });
 }
 
 /* ----- Hero Entrance Animation ----- */
 function initHeroAnimation() {
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  tl.from(".hero__logo-sp", {
+  tl.from(".hero__header", {
     opacity: 0, y: -20, duration: 0.8, delay: 0.3,
   });
   tl.from(".hero__catch-accent", {
@@ -54,7 +96,7 @@ function initHeroAnimation() {
   tl.from(".hero__desc", {
     opacity: 0, y: 20, duration: 0.6,
   }, "-=0.3");
-  tl.from(".hero__image-bottom", {
+  tl.from(".hero__slideshow--bottom", {
     opacity: 0, y: 60, duration: 1,
   }, "-=0.3");
 }
